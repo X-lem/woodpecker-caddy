@@ -1,0 +1,9 @@
+# expose WebUI and API
+{$SERVER_DOMAIN} {
+  reverse_proxy woodpecker-server:8000
+}
+
+# expose gRPC
+{$AGENT_DOMAIN} {
+  reverse_proxy h2c://woodpecker-server:9000
+}
